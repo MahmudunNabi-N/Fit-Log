@@ -25,7 +25,7 @@ export default function Hero() {
 
         <div className="flex justify-center md:justify-end">
           <img
-            src="../public/banner.svg"
+            src="/banner.png"
             alt="FitLog workout illustration"
             className="aspect-square w-full max-w-[334px] rounded-xl border border-[#222630] object-cover"
           />

@@ -21,7 +21,7 @@ export default function Footer() {
         }`}
       >
         <div className="flex items-center gap-2 text-white">
-          <img src="../public/logo.png" alt="FitLog" width={22} height={22} />
+          <img src="/public/logo.png" alt="FitLog" width={22} height={22} />
           <span className="font-display text-base font-bold tracking-wider">FITLOG</span>
         </div>
         <p className="text-center text-xs sm:text-right">
