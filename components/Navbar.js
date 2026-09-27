@@ -32,7 +32,7 @@ export default function Navbar() {
         }`}
       >
         <Link href="/" className="flex items-center gap-2 justify-self-start">
-          <img src="../public/logo.png" alt="FitLog logo" width={28} height={28} />
+          <img src="/logo.png" alt="FitLog logo" width={28} height={28} />
           <span className="hidden font-display text-xl font-bold tracking-wider min-[420px]:inline">
             FITLOG
           </span>

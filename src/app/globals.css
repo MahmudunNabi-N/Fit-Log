@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@theme {
+  --color-accent: #ccff00;
+  --color-line: #222630;
+
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Oswald", sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -7,7 +15,7 @@ html {
 body {
   background: #0f1115;
   color: #fff;
-  font-family: Inter, system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
 button,
@@ -30,6 +38,7 @@ select {
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
