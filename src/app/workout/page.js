@@ -7,7 +7,7 @@ import { fetchWorkout } from '@/lib/api';
 import { PLAN_CAP, usePlan } from '@/context/PlanContext';
 import Tags from '@/components/Tags';
 import Spinner from '@/components/Spinner';
-import NotFound from '../../not-found';
+import NotFound from '../not-found';
 
 export default function WorkoutDetail() {
   const { id } = useParams();
