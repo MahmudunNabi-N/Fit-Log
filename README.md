@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 💪 FitLog — Workout Library
+
+FitLog is a dark, responsive workout library built with Next.js App Router. Browse workouts, view workout details, add exercises to today's plan, save workouts for later, and track your plan with live stats.
+
+## Technologies
+
+- Next.js 14 (App Router)
+- React 18
+- Tailwind CSS 3
+- lucide-react
+- Google Fonts: Inter + Oswald
+- localStorage for persistence
+- FitLog REST API
+
+## Key Features
+
+1. Responsive navbar with live Plan and Saved counters.
+2. Hero/banner section with anchor navigation to the workout library.
+3. Responsive workout library with API-driven workout cards.
+4. Dynamic workout detail pages with specs, instructions, add/save actions and toast notifications.
+5. My Plan page with Today's Plan and Saved tabs, live Exercises/Minutes/Calories metrics, sorting, mark-as-done and remove actions.
+6. Five-workout plan limit with useful feedback.
+7. Loading states, empty states and custom 404 page.
+8. Plan, saved and done state persists across reloads using localStorage.
+
+## API
+
+Primary API:
+- All workouts: https://api.abcz.workers.dev/api/fitlog
+- Single workout: https://api.abcz.workers.dev/api/fitlog/:id
+
+Fallback API:
+- All workouts: https://api.api-store.workers.dev/api/fitlog
+- Single workout: https://api.api-store.workers.dev/api/fitlog/:id
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3001.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+Vercel is recommended for the easiest Next.js deployment.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Submission Links
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Live Link: add your deployed URL here
+- GitHub Repository: add your GitHub URL here
