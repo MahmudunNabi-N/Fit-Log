@@ -1,17 +1,21 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
-import { CalendarPlus, Bookmark } from 'lucide-react';
-import { fetchWorkout } from '@/lib/api';
-import { PLAN_CAP, usePlan } from '@/context/PlanContext';
-import Tags from '@/components/Tags';
-import Spinner from '@/components/Spinner';
-import NotFound from '@/src/app/not-found';
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { CalendarPlus, Bookmark } from "lucide-react";
+
+import { fetchWorkout } from "@/lib/api";
+import { PLAN_CAP, usePlan } from "@/context/PlanContext";
+
+import Tags from "@/components/Tags";
+import Spinner from "@/components/Spinner";
+import NotFound from "@/src/app/not-found";
 
 export default function WorkoutDetail() {
   const { id } = useParams();
+
   const { plan, addToPlan, addToSaved } = usePlan();
+
   const [workout, setWorkout] = useState(null);
   const [loading, setLoading] = useState(true);
   const [missing, setMissing] = useState(false);
@@ -20,18 +24,25 @@ export default function WorkoutDetail() {
     if (!id) return;
 
     let cancelled = false;
+
     setLoading(true);
     setMissing(false);
 
     fetchWorkout(id)
       .then((data) => {
-        if (!cancelled) setWorkout(data);
+        if (!cancelled) {
+          setWorkout(data);
+        }
       })
       .catch(() => {
-        if (!cancelled) setMissing(true);
+        if (!cancelled) {
+          setMissing(true);
+        }
       })
       .finally(() => {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       });
 
     return () => {
@@ -39,19 +50,25 @@ export default function WorkoutDetail() {
     };
   }, [id]);
 
-  if (loading) return <Spinner label="Loading workout…" />;
-  if (missing || !workout) return <NotFound />;
+  if (loading) {
+    return <Spinner label="Loading workout..." />;
+  }
+
+  if (missing || !workout) {
+    return <NotFound />;
+  }
 
   const inPlan = plan.some((item) => item.id === workout.id);
   const full = !inPlan && plan.length >= PLAN_CAP;
+
   const specs = [
-    ['Equipment', workout.equipment],
-    ['Difficulty', workout.difficulty],
-    ['Sets', workout.sets],
-    ['Reps', workout.reps],
-    ['Duration', `${workout.duration} min`],
-    ['Calories', `${workout.caloriesBurned} kcal`],
-    ['Rating', workout.rating],
+    ["Equipment", workout.equipment],
+    ["Difficulty", workout.difficulty],
+    ["Sets", workout.sets],
+    ["Reps", workout.reps],
+    ["Duration", `${workout.duration} min`],
+    ["Calories", `${workout.caloriesBurned} kcal`],
+    ["Rating", workout.rating],
   ];
 
   return (
@@ -70,9 +87,13 @@ export default function WorkoutDetail() {
             <h1 className="font-display text-4xl font-bold uppercase sm:text-5xl">
               {workout.name}
             </h1>
-            <p className="mt-3 text-neutral-400">{workout.description}</p>
+
+            <p className="mt-3 text-neutral-400">
+              {workout.description}
+            </p>
+
             <div className="mt-4">
-              <Tags tags={workout.muscleGroups || []} color="bg-cta" />
+              <Tags tags={workout.muscleGroups || []} />
             </div>
           </div>
 
@@ -85,7 +106,10 @@ export default function WorkoutDetail() {
                 <span className="font-semibold uppercase tracking-wide text-neutral-400">
                   {label}
                 </span>
-                <span className="text-right font-semibold">{value}</span>
+
+                <span className="text-right font-semibold">
+                  {value}
+                </span>
               </div>
             ))}
           </div>
@@ -94,12 +118,17 @@ export default function WorkoutDetail() {
             <h2 className="mb-3 font-display text-lg font-bold uppercase tracking-wide">
               Instructions
             </h2>
+
             <ol className="flex flex-col gap-3">
               {(workout.instructions || []).map((step, index) => (
-                <li key={`${index}-${step}`} className="flex gap-3 text-neutral-300">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-cta text-sm font-bold text-black">
+                <li
+                  key={`${index}-${step}`}
+                  className="flex gap-3 text-neutral-300"
+                >
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-black">
                     {index + 1}
                   </span>
+
                   <span className="pt-0.5">{step}</span>
                 </li>
               ))}
@@ -110,16 +139,21 @@ export default function WorkoutDetail() {
             <button
               onClick={() => addToPlan(workout)}
               disabled={full}
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-cta px-6 text-sm font-bold uppercase text-black transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-accent px-6 text-sm font-bold uppercase text-black transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
             >
               <CalendarPlus size={16} />
-              {full ? `Plan is full (${PLAN_CAP})` : "Add to today's plan"}
+
+              {full
+                ? `Plan is full (${PLAN_CAP})`
+                : "Add to today's plan"}
             </button>
+
             <button
               onClick={() => addToSaved(workout)}
               className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-[#374151] px-6 text-sm font-bold uppercase transition hover:border-accent hover:text-accent"
             >
-              <Bookmark size={16} /> Save for later
+              <Bookmark size={16} />
+              Save for later
             </button>
           </div>
         </div>
