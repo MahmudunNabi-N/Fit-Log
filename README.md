@@ -55,5 +55,5 @@ Vercel is recommended for the easiest Next.js deployment.
 
 ## Submission Links
 
-- Live Link: add your deployed URL here
-- GitHub Repository: add your GitHub URL here
+- Live Link:https://fit-log-mauve.vercel.app/
+- GitHub Repository:[ https://github.com/MahmudunNabi-N/Fit-Log](https://github.com/MahmudunNabi-N/Fit-Log)
